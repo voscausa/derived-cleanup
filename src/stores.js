@@ -17,7 +17,7 @@ export const stream = vcDerived([from, delta], ([$from, $delta, fired], set) => 
     unsubscribe = qry.subscribe(set);
   } else {
     console.log('callback: query update counter stream delta', $delta, 'fired:', fired);
-    qry.update($delta)
+    qry.delta = $delta;
   }
   // cleanup / stop
   return (fired) => {	// fired: null or store_id (pending)

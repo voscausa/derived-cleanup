@@ -19,9 +19,9 @@ export function query(from = 0, delta = 1) {
 
   return {
     subscribe: counter.subscribe,
-    update: (delta) => {
+    set delta(value) {
       clearInterval(interval);
-      interval = timer(delta);
-    },
+      interval = timer(value);
+    }
   }
 }
