@@ -1,21 +1,21 @@
 <script>
-	import { from } from "./stores.js";
-	import Stream from "./Stream.svelte";
-	import Noop from "./Noop.svelte";
-	let toggle = true;
+  import { from } from "./stores.js";
+  import Stream from "./Stream.svelte";
+  import Noop from "./Noop.svelte";
+  let toggle = true;
 
-	$: console.log("Query from:", $from);
+  $: console.log("Query from:", $from);
 </script>
 
 <button
-	on:click={() => {
-		toggle = !toggle;
-	}}>
-	Toggle nested components
+  on:click={() => {
+    toggle = !toggle;
+  }}>
+  Toggle nested components
 </button>
 
 {#if toggle}
-	<Stream />
+  <Stream />
 {:else}
-	<Noop />
+  <Noop />
 {/if}
