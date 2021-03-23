@@ -1,8 +1,7 @@
 import { readable } from 'svelte/store';
 
 export function query(from = 0, delta = 1) {
-  let interval = null;
-  let timer = null;
+  let interval, timer;
   let count = from;
 
   function setTimer(set) {
