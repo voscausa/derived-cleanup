@@ -9,14 +9,14 @@ export const delta = writable(1); // counter interval in seconds
 let unsubscribe = null;
 let qry = null;
 
-export const stream = vcDerived([from, delta], ([$from, $delta, fired], set) => {
+export const stream = vcDerived([from, delta], ([$from, $delta], set) => {
   if (unsubscribe === null) {
-    console.log('callback: query and subscribe counter stream, fired:', fired);
+    console.log('callback: query and subscribe counter stream, fired:');
     // initialize qry object
     qry = query($from, $delta);
     unsubscribe = qry.subscribe(set);
   } else {
-    console.log('callback: query update counter stream delta', $delta, 'fired:', fired);
+    console.log('callback: query update counter stream delta', $delta);
     qry.delta = $delta;
   }
   // cleanup / stop

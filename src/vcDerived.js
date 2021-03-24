@@ -40,8 +40,8 @@ export function vcDerived(stores, _callback, initial_value) {
       // a) just before the callback runs again, or b) the last subscriber unsubscribes.
       cleanup(fired); // pass fired !!
       const result = _callback((single)  // derived callback 
-        ? [values[0], fired]        // values[0]
-        : [...values, fired], set   // values, set
+        ? values[0]
+        : values, set
       )
 
       // sync: no return cleanup function call
