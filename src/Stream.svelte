@@ -11,20 +11,20 @@
 
 <div>
 	<button on:click={() => {$from = 100}}>
-		count from 100
+    ⏱ count from 100
 	</button>
 
 	<button on:click={() => {$from = 1000}}>
-		count from 1000
+		⏱ count from 1000
 	</button>
 
 	<br>
 
 	<button on:click={() => {$delta = 2}}>
-		interval 2 seconds
+		▶️ interval 2 seconds
 	</button>
 
 	<button on:click={() => {$delta = .2}}>
-		interval 0.2 seconds
+		⏩ interval 0.2 seconds
 	</button>
 </div>

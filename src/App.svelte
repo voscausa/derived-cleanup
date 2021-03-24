@@ -8,10 +8,8 @@
 </script>
 
 <button
-  on:click={() => {
-    toggle = !toggle;
-  }}>
-  Toggle nested components
+  on:click={() => toggle = !toggle}>
+  &#x2630 Toggle nested components
 </button>
 
 {#if toggle}
