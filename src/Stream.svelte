@@ -1,30 +1,50 @@
 <script>
 	import { writable, derived } from 'svelte/store';
 	import { from, delta, stream } from './stores.js'
+  
+  let forceUpdate = 0;
 </script>
 
-<h1>From: {$from} interval: {$delta} count : {$stream}</h1>
+<h1>From: {$from[0]} interval: {$delta} count : {$stream}</h1>
 
 <h3>
 	Streamed counter query arguments:
 </h3>
 
 <div>
-	<button on:click={() => {$from = 100}}>
-    ⏱ count from 100
-	</button>
-
-	<button on:click={() => {$from = 1000}}>
-		⏱ count from 1000
-	</button>
-
-	<br>
-
-	<button on:click={() => {$delta = 2}}>
-		▶️ interval 2 seconds
-	</button>
-
-	<button on:click={() => {$delta = .2}}>
-		⏩ interval 0.2 seconds
-	</button>
+  <table>
+    <tr>
+      <td>
+        <button on:click={() => $from = [100, forceUpdate++]}>
+          ⏱ Start again from 100
+        </button>
+      </td>
+      <td>
+        <button on:click={() => $from = [1000, forceUpdate++]}>
+          ⏱ Start again from 1000
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button on:click={() => {$delta = 2}}>
+          ▶️ Set interval 2 seconds
+        </button>
+      </td>
+      <td>  
+        <button on:click={() => {$delta = .2}}>
+          ⏩ Set interval 0.2 seconds
+        </button>
+      </td>
+  </tr>
+</table>
 </div>
+
+<style>
+  td { 
+    text-align: center;
+  }
+  button {
+    margin: .2em .2em;
+  }
+</style>
