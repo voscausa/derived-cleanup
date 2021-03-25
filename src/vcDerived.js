@@ -27,8 +27,8 @@ export function vcDerived(stores, _callback, initial_value) {
     let inited = false;
 
     const values = [];  // store values
-    let fired = null;   // fired stores index or null = stop
-    let pending = 0;
+    let fired = null;   // latest stores index or null = stop
+    let pending = 0;    // store sync lock (bitmap)
     let cleanup = noop;
 
     // sync stores to derive the result
@@ -58,7 +58,6 @@ export function vcDerived(stores, _callback, initial_value) {
       store,
       value => {
         values[i] = value;
-        fired = i;
         // console.log('fired', getBitString(pending))
         pending &= ~(1 << i); // reset pending bit [i]
         if (inited) sync();

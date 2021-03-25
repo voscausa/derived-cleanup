@@ -32,9 +32,3 @@ export const stream = vcDerived([from, delta], ([$from, $delta], set) => {
     };
   }
 }, null)
-
-export const _stream = vcDerived([from], ([$from, fired]) => {
-  console.log($from, 'fired', fired);
-  return $from; 
-
-})
